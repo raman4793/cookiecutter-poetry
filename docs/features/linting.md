@@ -2,32 +2,17 @@
 
 Code can be linted and quality-checked with the command
 
-``` bash
+```bash
 make check
 ```
 
-Note that this requires the pre-commit hooks to be installed. 
+Note that this requires the pre-commit hooks to be installed.
 
 This command will run the following tools:
 
-## black 
-
-[black](https://pypi.org/project/black/) is used to format the code, and it is configured through `pyproject.toml`:
-
-```toml
-[tool.black]
-line-length = 120
-include = '\.pyi?$'
-target-version = ['py39']
-fast = true
-```
-
-To exclude directories or files, add an `exclude` argument to `pre-commit-config.yaml`. Note that adding an `exclude` argument to `pyproject.toml`
-will not work, see also [here](https://stackoverflow.com/a/61046953/8037249).
-
 ## ruff
 
-[ruff](https://github.com/charliermarsh/ruff) is used to check the code style, and it is configured through `pyproject.toml`:
+[ruff](https://github.com/charliermarsh/ruff) is used to lint and format the code, and it is configured through `pyproject.toml`:
 
 ```
 [tool.ruff]
@@ -117,6 +102,20 @@ exclude = [
     '{{cookiecutter.project_name}}',
     'tests'
 ]
+```
+
+# Prettier
+
+[Prettier](https://prettier.io/) is used to format the markdown documentation, along with any json and yaml files.
+Its options can be configured in the included `.editorconfig` file or in greater detail by adding a `.prettierrc` file ([See Docs](https://prettier.io/docs/en/configuration)).
+
+```yaml
+[*]
+max_line_length = 120
+
+[*.json]
+indent_style = space
+indent_size = 4
 ```
 
 ## Github Actions

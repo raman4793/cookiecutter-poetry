@@ -14,9 +14,14 @@ bake-and-test-deploy: ## For quick publishing to cookiecutter-poetry-example to 
 		email="fpgmaas@gmail.com" \
 		github_author_handle=fpgmaas \
 		project_name=cookiecutter-poetry-example \
-		project_slug=cookiecutter_poetry_example 
-	@cd cookiecutter-poetry-example; poetry lock && \
+		project_slug=cookiecutter_poetry_example
+	@cd cookiecutter-poetry-example; poetry install && \
 		git init -b main && \
+		git add . && \
+		poetry run pre-commit install && \
+		poetry run pre-commit run -a || true && \
+		git add . && \
+		poetry run pre-commit run -a || true && \
 		git add . && \
 		git commit -m "init commit" && \
 		git remote add origin git@github.com:fpgmaas/cookiecutter-poetry-example.git && \
@@ -26,13 +31,13 @@ bake-and-test-deploy: ## For quick publishing to cookiecutter-poetry-example to 
 .PHONY: install
 install: ## Install the poetry environment
 	@echo "🚀 Creating virtual environment using pyenv and poetry"
-	@poetry install	
+	@poetry install
 	@poetry shell
 
 .PHONY: check
 check: ## Run code quality tools.
 	@echo "🚀 Checking Poetry lock file consistency with 'pyproject.toml': Running poetry lock --check"
-	@poetry lock --check
+	@poetry check --lock
 	@echo "🚀 Linting code: Running pre-commit"
 	@poetry run pre-commit run -a
 	@echo "🚀 Linting with ruff"

@@ -1,24 +1,24 @@
 # Prompt arguments
 
-When running the command ``ccp`` a prompt will start which enables you to configure your repository. The
+When running the command `ccp` a prompt will start which enables you to configure your repository. The
 prompt values and their explanation are as follows:
 
 ---
 
 **author**
-    
- Your full name.
+
+Your full name.
 
 **email**
-    
+
 Your email address.
 
 **author_github_handle**
-    
+
 Your github handle, i.e. `<handle>` in `https://github.com/<handle>`
 
 **project_name**
-    
+
 Your project name. Should be equal to the name of your repository
 and it should only contain alphanumeric characters and `-`'s.
 
@@ -27,7 +27,7 @@ and it should only contain alphanumeric characters and `-`'s.
 The project slug, will default to the `project_name` with all `-`'s
 replaced with `_`. This will be how you import your code later, e.g.
 
-``` python
+```python
 from <project_slug> import foo
 ```
 
@@ -69,9 +69,13 @@ will be deployed to the `gh-pages` branch.
 
 `"y"` or `"n"`. Adds a simple [Dockerfile](https://docker.com).
 
+**devcontainer**
+
+`"y"` or `"n"`. Adds a [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers) specification to the project along with pre-installed pre-commit hooks and VSCode python extension configuration.
+
 **open_source_license**
 
 Choose a [license](https://choosealicense.com/). Options:
-    `["1. MIT License", "2. BSD license", "3. ISC license",  "4. Apache Software License 2.0", "5. GNU General Public License v3", "6. Not open source"]`
+`["1. MIT License", "2. BSD license", "3. ISC license",  "4. Apache Software License 2.0", "5. GNU General Public License v3", "6. Not open source"]`
 
 ---

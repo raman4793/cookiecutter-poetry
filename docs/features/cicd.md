@@ -1,4 +1,3 @@
-
 # CI/CD with Github actions
 
 when `include_github_actions` is set to `"y"`, a `.github` directory is
@@ -7,11 +6,11 @@ added with the following structure:
     .github
     ├── workflows
     ├─── run-checks
-    │    └── action.yml    
+    │    └── action.yml
     ├─── setup-poetry-env
-    │    └── action.yml         
+    │    └── action.yml
     ├── on-merge-to-main.yml
-    ├── on-pull-request.yml          
+    ├── on-pull-request.yml
     └── on-release-main.yml
 
 `on-merge-to-main.yml` and `on-pull-request.yml` are identical except
@@ -28,14 +27,14 @@ made on the `main` branch. In addition, `on-release-main.yml` also
 publishes the project to Pypi or Artifactory if `publish_to` is set to
 `"pypi"` or `"artifactory"`, and it builds and deploys the documentation
 if `mkdocs` is set to `"y"`. To learn more about these features,
-see [Publishing to PyPi or Artifactory](./publishing.md) and [Documentation with MkDocs](./mkdocs.md) 
+see [Publishing to PyPi or Artifactory](./publishing.md) and [Documentation with MkDocs](./mkdocs.md)
 
 Additionally, all workflows check for compatibility with multiple Python
 versions if `tox` is set to `"y"`.
 
 # How to trigger a release?
 
-To trigger a new release, navigate to your repository on GitHub, click ``Releases`` on the right, and then select `Draft
+To trigger a new release, navigate to your repository on GitHub, click `Releases` on the right, and then select `Draft
 a new release`. If you fail to find the button, you could also directly visit
 `https://github.com/<username>/<repository-name>/releases/new`.
 
